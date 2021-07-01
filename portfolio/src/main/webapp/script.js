@@ -12,6 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Food');
+  data.addColumn('number', 'Percentage');
+        data.addRows([
+          ['Lemonade', 20],
+          ['Hot Chocolate', 20],
+          ['Pizza', 15],
+          ['Black Beans', 15],
+          ['Jelly Toast', 30]
+        ]);
+
+  const options = {
+    'title': 'My Balanced Diet',
+    'width':500,
+    'height':400
+  };
+
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart-container'));
+  chart.draw(data, options);
+}
+
 /**
  * Adds a random greeting to the page.
  */
@@ -25,4 +52,12 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+async function getDateMessage() {
+    const date = await fetch('/date');
+    const dateMessage = await date.text();
+
+    const dateMessageContainer = document.getElementById('date-message');
+    dateMessageContainer.innerText = dateMessage;
 }

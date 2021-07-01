@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
@@ -11,12 +12,23 @@
       <h1>DJ's Portfolio</h1>
       <p>This is my portfolio for SPS!</p>
       <p>I'm a PA for Team 28. I like sweets, Stardew Valley, and sign languages!</p>
+      <div id="chart-container"></div>
       <p>Click <a href="/hello">here</a> to see content created by server code.</p>
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
+      <form action="form-handler" method="POST">
+        <p>Enter some text here:</p>
+        <textarea name="text-input">hello world</textarea>
+        <br/>
+        <input type="submit" />
+      </form>
+
       <p>Here's a helpful chart for using flexbox in CSS!</p>
       <img src="/images/flexbox.jpeg" style="height: 100%; width: 100%;"/>
+      <p>Click this button to see the server's current date.</p>
+      <button onclick="getDateMessage();">Get date</button>
+      <p id="date-message"></p>
     </div>
   </body>
 </html>
